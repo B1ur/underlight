@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="bower_components/react/react.js"></script>
+    <script src="bower_components/react/react-dom.js"></script>
+    <script src="bower_components/react/JSXTransformer.js"></script>
+    <script type="text/jsx">
+        var MessageBox = React.createClass({
+            alertMe: function(){
+              alert('点击了');
+            },
+
+            render : function () {
+                var submessages = [];
+                        for(var i=0;i < 10;i++){
+                    submessages.push(<Submessage/>)
+                }
+                return  <div>
+                        <h1 onClick={this.alertMe}>您好世界！！！</h1>
+                    {submessages}
+                        </div>
+            }
+        });
+
+        var Submessage = React.createClass({
+           render: function () {
+               return <div>
+                      <h2>这个代码很有意思。</h2>
+                      <Title/>
+                      </div>
+           }
+        });
+
+        var Title = React.createClass({
+           render: function () {
+               return <h3>愉快的学习编程！</h3>;
+           }
+        });
+
+        ReactDOM.render(<MessageBox/>,document.getElementById('app'),
+        function () {
+            console.log('ok');
+        });
+    </script>
+
+</body>
+</html>

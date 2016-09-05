@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../jquery-2.1.1.js"></script>
+    <style>
+        div:after{content: '|';animation: flash 0.5s steps(2,start) infinite;-webkit-animation: flash 0.5s steps(2,start) infinite;}
+        @keyframes flash {
+            0%{visibility:visible;}
+            100%{visibility: hidden;}
+        }
+        @-webkit-keyframes flash {
+            0%{visibility:visible;}
+            100%{visibility: hidden;}
+        }
+        .over:after{display: none;}
+    </style>
+</head>
+<body>
+    <div style="margin:80px auto;width: 700px;border: 1px solid #dddddd;padding: 10px 30px;line-height: 40px;">
+        - Everyday I wake up next to an angel, more beautiful than words can say.
+        <br/>
+        - They said it would not work but what did they know.
+        <br/>
+        - Cause years passed and we are still here today.
+        <br/>
+        - Never in my dreams did I think that this would happen to me.
+        <br/><br/>
+        - As I stand here before my women, I cannot fight back the tears in my eyes.
+        <br/>
+        - Oh how could I be so lucky, I must have done something right.
+        <br/>
+        - And I promise to love her for the rest of my love.
+    </div>
+<script>
+    (function(){
+        var div = $('div');
+       var text = div.html();
+        var pos = 0;
+        var len = text.length;
+        div.html('');
+    function typewrite(){
+        pos++;
+        if(pos<len){
+            switch(text.charAt(pos)){
+                case '<':
+                    pos = text.indexOf('>',pos);
+                    break;
+            }
+        div.html(text.substring(0,pos));
+        setTimeout(typewrite,100);
+    }else {
+        div.addClass('over');
+        }
+    }
+    typewrite();
+    })();
+</script>
+</body>
+</html>
